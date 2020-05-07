@@ -1,0 +1,6 @@
+language: node
+node: 12
+
+scripts:
+    - npm run build
+    - npm run eslint

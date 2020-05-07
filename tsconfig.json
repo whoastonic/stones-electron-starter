@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules",
+    "public"
+  ],
+  "include": [
+    "src/"
+  ]
+}

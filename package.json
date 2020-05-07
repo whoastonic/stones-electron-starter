@@ -1,0 +1,62 @@
+
+{
+  "name": "@npmstonic/stones-electron-starter",
+  "bin": {
+    "@npmstonic/stones-electron-starter": "bin/ses",
+    "ses": "bin/ses"
+  },
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "description": "A simple boiler electron boiler that includes TS + React",
+  "scripts": {
+    "pack": "",
+    "eslint": "eslint --ext .tsx,.ts src/",
+    "start:parcel": "parcel -p 8080 src/index.html",
+    "build:electron": "tsc src/start-electron.ts --outDir dist",
+    "build": "npm run build:electron && parcel build src/index.tsx --out-dir dist",
+    "start:electron": "npm run build:electron && electron dist/start-electron.js"
+  },
+  "repository": "https://github.com/whoastonic/stones-electron-starter",
+  "keywords": [
+    "electron",
+    "boiler",
+    "quick",
+    "start",
+    "react",
+    "redux",
+    "typescript",
+    "boiler-plate"
+  ],
+  "author": "whoastonic",
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@types/sinon": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "ava": "^3.8.1",
+    "concurrently": "^5.2.0",
+    "dateformat": "^3.0.3",
+    "electron": "^6.0.8",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^16.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "nyc": "^15.0.1",
+    "parcel-bundler": "^1.12.4",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "reduxsauce": "^1.1.2",
+    "sinon": "^9.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.0"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
