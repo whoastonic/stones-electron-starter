@@ -1,6 +1,6 @@
 # stones-electron-starter
  
-A quick boiler-plate that's packed with React, Redux & other things to get you started on your next Electron project!
+A quick boiler-plate that's packed with React, Redux & Typescript to get you started on your next Electron project!
 
 ## Getting started
 
@@ -11,4 +11,3 @@ $ cd stones-electron-starter
 
 $ npm install & npm start:dev
 ```
-

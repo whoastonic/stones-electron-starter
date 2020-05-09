@@ -1,20 +1,20 @@
-
 {
   "name": "@npmstonic/stones-electron-starter",
+  "private": true,
   "bin": {
     "@npmstonic/stones-electron-starter": "bin/ses",
-    "ses": "bin/ses"
+    "stones-electron-starter": "bin/ses"
   },
   "version": "1.0.0",
   "main": "src/index.tsx",
   "description": "A simple boiler electron boiler that includes TS + React",
   "scripts": {
-    "pack": "",
-    "eslint": "eslint --ext .tsx,.ts src/",
-    "start:parcel": "parcel -p 8080 src/index.html",
-    "build:electron": "tsc src/start-electron.ts --outDir dist",
-    "build": "npm run build:electron && parcel build src/index.tsx --out-dir dist",
-    "start:electron": "npm run build:electron && electron dist/start-electron.js"
+    "start:react": "react-scripts start",
+    "eject": "react-scripts eject",
+    "test": "echo \"Testing nothing...\"",
+    "build": "npm run build:electron && react-scripts build",
+    "start:electron": "electron build/start-electron.js",
+    "build:electron": "tsc src/start-electron.ts --outDir build"
   },
   "repository": "https://github.com/whoastonic/stones-electron-starter",
   "keywords": [
@@ -27,12 +27,30 @@
     "typescript",
     "boiler-plate"
   ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "author": "whoastonic",
   "devDependencies": {
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.1.2",
+    "@types/dateformat": "^3.0.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
+    "@types/react-redux": "^7.1.8",
+    "@types/react-router-dom": "^5.1.5",
     "@types/sinon": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "add": "^2.0.6",
     "ava": "^3.8.1",
     "concurrently": "^5.2.0",
     "dateformat": "^3.0.3",
@@ -46,17 +64,19 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "eslint-plugin-standard": "^4.0.1",
     "nyc": "^15.0.1",
-    "parcel-bundler": "^1.12.4",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5",
-    "reduxsauce": "^1.1.2",
     "sinon": "^9.0.2",
     "tslint": "^5.19.0",
-    "typescript": "^3.6.0"
+    "typescript": "^3.6.0",
+    "yarn": "^1.22.4"
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet-async": "^1.0.6",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "redux": "^4.0.5",
+    "reduxsauce": "^1.1.2"
   }
 }
