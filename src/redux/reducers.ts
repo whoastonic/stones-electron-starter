@@ -5,6 +5,19 @@ import { createReducer } from 'reduxsauce'
 import { CARD_ACTIONS } from './types'
 import { combineReducers } from 'redux'
 
+export interface CardState {
+  name: string
+  desc: string
+  cardType: string
+  cardInfo: CardInfo
+}
+
+export interface CardInfo {
+  atk?: number
+  def?: number
+  effect?: string
+}
+
 interface State {
   fetching: boolean
   error: string | undefined
@@ -28,6 +41,9 @@ export const INITIAL_CARD_STATE = {
 }
 
 export const request = (state = INITIAL_STATE, action: any) => {
+  console.log(action)
+  console.log(state)
+
   return {
     ...state,
     fetching: true
@@ -36,6 +52,7 @@ export const request = (state = INITIAL_STATE, action: any) => {
 
 const success = (state = INITIAL_STATE, action: any) => {
   console.log(action)
+  console.log(state)
 
   return {
     ...state,

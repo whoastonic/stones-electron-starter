@@ -1,17 +1,17 @@
 import React, { ReactElement } from 'react'
 import './index.css'
 
-import * as logger from '../../modules/logger'
+import { CardFinder } from '../../components/card-finder'
+import { CardLoader } from '../../components/card-loader'
+import { INITIAL_CARD_STATE } from '../../redux/reducers'
 
-interface WorldProps {
-  fetchCard: (name: string) => void
+const card = {
+  name: INITIAL_CARD_STATE.name,
+  desc: INITIAL_CARD_STATE.description,
+  type: INITIAL_CARD_STATE.cardProperties.cardType
 }
 
-const findCard = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-  logger.info('searching for the card!')
-}
-
-const HelloWorld = (props: WorldProps): ReactElement => {
+const HelloWorld = (): ReactElement => {
   return (
     <div>
       <div className="container">
@@ -21,13 +21,8 @@ const HelloWorld = (props: WorldProps): ReactElement => {
 
         <div className="card-finder">
           Also heres a Yu-Gi-Oh Card Finder!
-          <div className="card-search">
-            <input type="text" className="card-search" id="card-search"/>
-            <br/>
-            <button onClick={findCard}>Find Card!</button>
-          </div>
-          <div id="card-loader" className="card-container">
-          </div>
+          <CardFinder searchCard={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { console.log('something') }}/>
+          <CardLoader card={card}/>
         </div>
       </div>
     </div>

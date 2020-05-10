@@ -12,7 +12,7 @@
     "start:react": "react-scripts start",
     "eject": "react-scripts eject",
     "test": "echo \"Testing nothing...\"",
-    "build": "npm run build:electron && react-scripts build",
+    "build": "react-scripts build && npm run build:electron",
     "start:electron": "electron build/start-electron.js",
     "build:electron": "tsc src/start-electron.ts --outDir build"
   },

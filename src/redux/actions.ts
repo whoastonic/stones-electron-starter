@@ -5,5 +5,5 @@ export const {
 } = createActions({
   requestCard: [],
   successCard: ['card'],
-  errorCard: ['card', 'error']
+  errorCard: ['error']
 })
