@@ -7,6 +7,7 @@ import { loadableReady } from '@loadable/component'
 
 import { App } from './app'
 import { store, INITIAL_STATE } from './redux'
+import { error } from './modules/logger'
 
 loadableReady(() => hydrate(
   <HelmetProvider>
@@ -19,4 +20,4 @@ loadableReady(() => hydrate(
     </Provider>
   </HelmetProvider>,
   document.getElementById('root')
-))
+)).catch((err) => error(err))

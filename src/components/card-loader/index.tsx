@@ -1,52 +1,69 @@
 import React, { ReactElement } from 'react'
 
 import { connect } from 'react-redux'
+import { AppState, InitialState } from '../../redux/reducers'
 
-interface CardProps {
-  name: string
-  type: string
-  desc: string
-  atk?: number
-  dfc?: number
-  effect?: string
+const mapStateToProps = (state: any): any => {
+  return state
 }
-
-interface CLProps {
-  card?: CardProps
-}
-
-const mapStateToProps = (state: any): void => {}
 
 export const CardLoader = connect(mapStateToProps)(({
-  card
-}: CLProps): ReactElement => {
+  cards
+}: AppState): ReactElement => {
   return (
     <div>
       {
-        card === undefined
-          ? (<div></div>)
-          : (
-            <div>
-                Card - {card.name}
-                Type - {card.type}
-                Description: <br/> {card.desc}
-              {
-                card.effect !== undefined
-                  ? <div>Effect - {card.effect}</div>
-                  : (<div></div>)
-              }
-              {
-
-                card.atk !== undefined && card.dfc !== undefined
-                  ? <div>
-                    Attack Points - {card.atk}
-                    Defence Points - {card.dfc}
-                  </div>
-                  : <div></div>
-              }
-            </div>
-          )
+        cards !== undefined
+          ? loadContent(cards)
+          : <div></div>
       }
     </div>
   )
 })
+
+function loadContent ({ fetching, error, data }: InitialState): ReactElement {
+  return (
+    <div className="container card-finder-container">
+      {
+        fetching
+          ? <div>Fetching Data...</div>
+          : <div></div>
+      }
+      {
+        data.length > 0
+          ? loadCardInfo(data)
+          : error !== undefined
+            ? error
+            : <div></div>
+      }
+    </div>
+  )
+}
+
+function loadCardInfo (data: any[]): ReactElement {
+  return (
+    <div>
+      {
+        data.map((card: any, key) => (
+          <div className="card card-box" key={key}>
+            <div className="card card-name">
+              {card.name}
+            </div>
+            <div className="card card-img">
+              <img src={card.card_images[0].image_url_small} alt="..."/>
+            </div>
+            <div className="card card-info">
+              <div className="card card-props">
+                {card.atk} / {card.def} <br/>
+                {card.level} | {card.race} | {card.attribute} | {card.archtype} | {card.type}
+              </div>
+              <div className="card card-desc">
+                {card.desc}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  )
+}

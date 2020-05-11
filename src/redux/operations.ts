@@ -9,26 +9,7 @@ const {
 
 export const fetchCard = (name: string) => (dispatch: any) => {
   dispatch(requestCard())
-  fetchJSON('https://jsonplaceholder.typicode.com/todos/1')
+  fetchJSON(`https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${name}`)
     .then((data) => dispatch(successCard(data)))
     .catch((err) => dispatch(errorCard(err)))
 }
-
-// export const fetchCard = (name: string) => (dispatch) => {
-//   return (dispatch) => {
-//     dispatch(requestCard())
-//     fetchJSON('')
-//   }
-// }
-
-// export const fetchAnime = (name: string): void => {
-//   return (dispatch) => {
-
-//   }
-// }
-
-// export const fetchManga = (name: string): void => {
-//   return (dispatch) => {
-
-//   }
-// }

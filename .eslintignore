@@ -1,1 +1,4 @@
+# shouldn't mess with...
 node_modules
+src/react-app-env.d.ts
+src/serviceWorker.ts

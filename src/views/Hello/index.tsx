@@ -3,6 +3,7 @@ import './index.css'
 
 import { CardFinder } from '../../components/card-finder'
 import { CardLoader } from '../../components/card-loader'
+import { INITIAL_STATE } from '../../redux'
 
 const HelloWorld = (): ReactElement => {
   return (
@@ -15,7 +16,7 @@ const HelloWorld = (): ReactElement => {
         <div className="card-finder">
           Also heres a Yu-Gi-Oh Card Finder!
           <CardFinder searchCard={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { console.log('something') }}/>
-          <CardLoader/>
+          <CardLoader cards={INITIAL_STATE}/>
         </div>
 
         Not into that? check <a href="/world">this</a> out.

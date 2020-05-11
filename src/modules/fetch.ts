@@ -31,13 +31,15 @@ export const fetchJSON = async (
       : null
   })
 
-  const json = await response.json()
-
   if (response.status !== 200) {
+    console.log(response.status)
+
     const text = await response.text()
 
-    throw new Error(`Error fetching data, TEXT: ${text} | JSON: ${JSON.stringify(json)}`)
+    throw new Error(text)
   }
+
+  const json = await response.json()
 
   fetchResponse.status = [
     response.statusText,

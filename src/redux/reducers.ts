@@ -5,7 +5,7 @@ import { createReducer } from 'reduxsauce'
 import { CARD_ACTIONS } from './types'
 import { combineReducers, Action } from 'redux'
 
-interface InitialState {
+export interface InitialState {
   fetching: boolean
   error: string | undefined
   data: any[]
@@ -15,32 +15,28 @@ export interface AppState {
   cards?: InitialState
 }
 
-export const request = (state: InitialState, action: Action<InitialState>) => {
-  console.log(action)
-  console.log(state)
-
+export const request = (state: InitialState, action: Action<any>) => {
   return {
     ...state,
     fetching: true
   }
 }
 
-const success = (state: InitialState, action: Action<InitialState>) => {
-  console.log(action)
-  console.log(state)
-
+const success = (state: InitialState, action: any) => {
   return {
     ...state,
-    data: ['invalid-data']
+    fetching: false,
+    data: action.card.body.data
   }
 }
 
-const error = (state: InitialState, action: Action<InitialState>) => {
+const error = (state: InitialState, action: any) => {
   console.log(action)
 
   return {
     ...state,
-    erorr: 'some-error'
+    fetching: false,
+    error: JSON.parse(action.error.message).error
   }
 }
 

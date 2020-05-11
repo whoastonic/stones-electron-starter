@@ -1,6 +1,9 @@
 body {
-    margin: auto 0;
     font-family: sans-serif;
     font-weight: 500;
     font-size: 26px;
+}
+
+div {
+    padding-bottom: 15px;
 }

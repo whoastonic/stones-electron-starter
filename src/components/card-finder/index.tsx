@@ -15,11 +15,7 @@ const mapDispatchToProps = (dispatch: Dispatch): any => {
     searchCard: (_: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
       const str = (document.getElementById('find-card') as HTMLInputElement).value
 
-      console.log(str)
-
-      fetchCard('something')(dispatch)
-
-      console.log('more of something')
+      fetchCard(str)(dispatch)
     }
   }
 }
