@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 
 import { connect } from 'react-redux'
-import { CardState } from '../../redux/reducers'
 
 interface CardProps {
   name: string
@@ -13,10 +12,10 @@ interface CardProps {
 }
 
 interface CLProps {
-  card: CardProps
+  card?: CardProps
 }
 
-const mapStateToProps = (state: CardState): void => {}
+const mapStateToProps = (state: any): void => {}
 
 export const CardLoader = connect(mapStateToProps)(({
   card
@@ -25,11 +24,7 @@ export const CardLoader = connect(mapStateToProps)(({
     <div>
       {
         card === undefined
-          ? (
-            <div>
-                Invalid Card
-            </div>
-          )
+          ? (<div></div>)
           : (
             <div>
                 Card - {card.name}

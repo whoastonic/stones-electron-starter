@@ -3,44 +3,19 @@
 import { createReducer } from 'reduxsauce'
 
 import { CARD_ACTIONS } from './types'
-import { combineReducers } from 'redux'
+import { combineReducers, Action } from 'redux'
 
-export interface CardState {
-  name: string
-  desc: string
-  cardType: string
-  cardInfo: CardInfo
-}
-
-export interface CardInfo {
-  atk?: number
-  def?: number
-  effect?: string
-}
-
-interface State {
+interface InitialState {
   fetching: boolean
   error: string | undefined
-  data: object | string | object[] | string[]
+  data: any[]
 }
 
-export const INITIAL_STATE = {
-  fetching: false,
-  error: undefined,
-  data: []
+export interface AppState {
+  cards?: InitialState
 }
 
-export const INITIAL_CARD_STATE = {
-  name: '',
-  description: '',
-  cardProperties: {
-    cardType: '',
-    cardEffect: '',
-    battleInfo: null
-  }
-}
-
-export const request = (state = INITIAL_STATE, action: any) => {
+export const request = (state: InitialState, action: Action<InitialState>) => {
   console.log(action)
   console.log(state)
 
@@ -50,23 +25,29 @@ export const request = (state = INITIAL_STATE, action: any) => {
   }
 }
 
-const success = (state = INITIAL_STATE, action: any) => {
+const success = (state: InitialState, action: Action<InitialState>) => {
   console.log(action)
   console.log(state)
 
   return {
     ...state,
-    data: action
+    data: ['invalid-data']
   }
 }
 
-const error = (state = INITIAL_STATE, action: any) => {
+const error = (state: InitialState, action: Action<InitialState>) => {
   console.log(action)
 
   return {
     ...state,
-    data: action
+    erorr: 'some-error'
   }
+}
+
+export const INITIAL_STATE = {
+  fetching: false,
+  error: undefined,
+  data: []
 }
 
 export const CARD_HANDLER = {
@@ -76,5 +57,8 @@ export const CARD_HANDLER = {
 }
 
 export default combineReducers({
-  cards: createReducer(INITIAL_STATE, CARD_HANDLER)
+  cards: createReducer<InitialState>(
+    INITIAL_STATE,
+    CARD_HANDLER
+  )
 })

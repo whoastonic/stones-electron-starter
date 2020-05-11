@@ -10,8 +10,8 @@ const {
 export const fetchCard = (name: string) => (dispatch: any) => {
   dispatch(requestCard())
   fetchJSON('https://jsonplaceholder.typicode.com/todos/1')
-    .then((data) => successCard(data))
-    .catch((err) => errorCard(err))
+    .then((data) => dispatch(successCard(data)))
+    .catch((err) => dispatch(errorCard(err)))
 }
 
 // export const fetchCard = (name: string) => (dispatch) => {

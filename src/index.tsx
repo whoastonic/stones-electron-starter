@@ -1,12 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { hydrate } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { HelmetProvider } from 'react-helmet-async'
+import { loadableReady } from '@loadable/component'
 
 import { App } from './app'
+import { store, INITIAL_STATE } from './redux'
 
-import * as logger from './modules/logger'
-
-logger.info('logging from file...')
-
-const application = document.getElementById('root')
-
-ReactDOM.render(<App/>, application)
+loadableReady(() => hydrate(
+  <HelmetProvider>
+    <Provider store={
+      store(({ cards: INITIAL_STATE }))
+    }>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </HelmetProvider>,
+  document.getElementById('root')
+))
