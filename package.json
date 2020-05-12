@@ -1,12 +1,12 @@
 {
-  "name": "@npmstonic/stones-electron-starter",
+  "name": "stones-electron-starter",
   "private": true,
   "bin": {
-    "@npmstonic/stones-electron-starter": "bin/ses",
-    "stones-electron-starter": "bin/ses"
+    "@npmstonic/stones-electron-starter": "bin/stones-electron-starter",
+    "stones-electron-starter": "bin/stones-electron-starter"
   },
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "bin/actions/index.js",
   "description": "A simple boiler electron boiler that includes TS + React",
   "scripts": {
     "start:react": "react-scripts start",
